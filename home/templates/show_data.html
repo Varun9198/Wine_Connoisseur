@@ -1,0 +1,54 @@
+<h3>Welcome!</h3>
+ <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<a href="/home/sort_data/"> Sort according to prices </a>
+<form action = "/home/filter/" method="POST"> {% csrf_token %}
+    <input type="text" name="country" placeholder="Country"/>
+    <input type="text" name="province" placeholder="Province"/>
+    {% comment %} <input type="text" name="regions_1" placeholder="Region1"/>
+    <input type="text" name="region_2" placeholder="Region2"/> {% endcomment %}
+    <input type="submit" value="Filter"/>
+</form>
+
+
+{% comment %} <div class="row">
+    <div class="col s12 m6">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">Card Title</span>
+          <p>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.</p>
+        </div>
+        <div class="card-action">
+        
+        </div>
+      </div>
+    </div>
+  </div> {% endcomment %}
+	<div class = "container">
+    <div class="row valign-wrapper">
+    <div class="col s10 offset-s1 valign">
+	{% for x in wines %}
+
+    <br>
+            <div class="row">
+                <div class="col s11 offset-s1">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text">
+                            <span class="card-title">{{x.VARIETY}}</span>
+                        </div>
+                        <div class="card-action">
+                            <p>ID: {{x.ID}} <br>COUNTRY: {{x.COUNTRY}} <br>PROVINCE: {{x.PROVINCE}} <br>DESCRIPTION: {{x.DESCRIPTION}} <br>DESIGNATION: {{x.DESIGNATION}} <br>POINTS: {{x.POINTS}}<br> PRICE: {{x.PRICE}}<br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <br>
+    {% endfor %}
+    </div>
+    </div>
+    </div>   
